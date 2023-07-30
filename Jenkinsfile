@@ -1,11 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            // Use a Node.js with Angular CLI Docker image
-            image 'node:14'
-            args '-p 4200:4200' // Expose port 4200 for serving the application
-        }
-    }
+    agent any
 
     stages {
         stage('Checkout') {
@@ -38,8 +32,9 @@ pipeline {
 
         stage('Start Server') {
             steps {
-                // Serve the built Angular application using the Angular CLI
-                sh 'npm run start'
+                // Assuming you have a script to start the server, replace 'start-server.sh' with the actual script name
+                // This step assumes that the script starts a server that serves the built Angular application
+                sh './start-server.sh'
             }
         }
     }
